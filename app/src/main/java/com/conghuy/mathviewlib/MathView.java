@@ -55,7 +55,10 @@ public class MathView extends WebView {
 
         return new Theme(loader).makeChunk(template);
     }
-
+    public String chunkString="";
+    public String getChunkString(){
+        return chunkString;
+    }
     public void setText(String text) {
         mText = text;
         Chunk chunk = getChunk();
@@ -64,7 +67,8 @@ public class MathView extends WebView {
         String TAG_CONFIG = "config";
         chunk.set(TAG_FORMULA, mText);
         chunk.set(TAG_CONFIG, mConfig);
-        this.loadDataWithBaseURL(null, chunk.toString(), "text/html", "utf-8", "about:blank");
+        chunkString=chunk.toString();
+        this.loadDataWithBaseURL(null,chunkString , "text/html", "utf-8", "about:blank");
     }
 
     public String getText() {
